@@ -38,16 +38,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, watch } from 'vue'
+
+interface Field {
+  name: string
+  vowelCount: { name: number }
+  highlight: { name: boolean }
+}
 
 export default {
   setup() {
-    const fields = ref([createField(), createField(), createField()])
+    const fields = ref<Field[]>([createField(), createField(), createField()])
     const searchText = ref('')
     const searchHighlight = ref(false)
 
-    function createField() {
+    function createField(): Field {
       return {
         name: '',
         vowelCount: { name: 0 },
@@ -61,7 +67,7 @@ export default {
       }
     }
 
-    const removeField = (index) => {
+    const removeField = (index: number) => {
       fields.value.splice(index, 1)
     }
 
@@ -69,8 +75,8 @@ export default {
       console.log('Form Submitted', fields.value)
     }
 
-    const updateVowelCount = (field, key) => {
-      const countVowels = (str) => {
+    const updateVowelCount = (field: Field, key: keyof Field['vowelCount']) => {
+      const countVowels = (str: string): number => {
         return (str.match(/[aeiou]/gi) || []).length
       }
       field.vowelCount[key] = countVowels(field[key])
