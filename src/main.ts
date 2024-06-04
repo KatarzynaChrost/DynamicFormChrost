@@ -1,14 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// Import PrimeVue and its styles
 import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/saga-blue/theme.css' // Możesz wybrać inny temat
+import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
-import 'primeflex/primeflex.css' // Jeśli chcesz korzystać z PrimeFlex
+import 'primeflex/primeflex.css'
 
-// Import specific PrimeVue components
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 
